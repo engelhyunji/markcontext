@@ -1,0 +1,43 @@
+# 운영체제 및 편집기 파일
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Java 빌드 결과
+*.class
+target/
+build/
+out/
+
+# 로그 및 임시파일
+*.log
+*.tmp
+*.temp
+logs/
+temp/
+work/
+
+# 압축 및 백업파일
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.bak
+*.old
+
+# 인증서 및 개인키
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+
+# MarkAny 라이선스 파일
+.MarkanyLicense*
+*LicenseFps*
+
+# 런타임 생성 파일
+*.lock
+.LOCK_*
+*.der

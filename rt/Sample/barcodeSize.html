@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마크애니 뷰어 및 바코드 설정</title>
+    <style>
+        /* 기본 초기화 및 폰트 설정 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        /* 메인 컨테이너 */
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        /* 헤더 영역 */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header h1 {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        /* 콘텐츠 영역 */
+        .content {
+            padding: 30px;
+        }
+
+        h2 {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            margin-top: 30px;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        /* 테이블 스타일 (뷰어 옵션) */
+        .option-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .option-table th, .option-table td {
+            border: 1px solid #e1e4e8;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .option-table th {
+            background-color: #f8f9fa;
+            color: #555;
+            width: 60px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .option-table tr:hover {
+            background-color: #fbfbfb;
+        }
+
+        /* 안내 문구 스타일 */
+        .info-list {
+            list-style: none;
+            background-color: #fff8e1;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #ffc107;
+            font-size: 0.9rem;
+            color: #5d4037;
+            margin-bottom: 25px;
+        }
+
+        .info-list li {
+            margin-bottom: 5px;
+        }
+
+        .info-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 계산기 섹션 스타일 */
+        .calculator-section {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .calc-title {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            display: block;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .input-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-wrapper label {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            margin-bottom: 4px;
+        }
+
+        input[type="number"] {
+            padding: 8px 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            width: 120px;
+            font-size: 0.95rem;
+        }
+
+        input[type="button"] {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            height: 40px;
+            align-self: flex-end;
+        }
+
+        input[type="button"]:hover {
+            background-color: #2980b9;
+        }
+
+        .result-box {
+            background-color: white;
+            border: 1px dashed #bdc3c7;
+            padding: 15px;
+            border-radius: 4px;
+            display: flex;
+            gap: 20px;
+            font-size: 0.95rem;
+        }
+
+        .result-item {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .result-item span {
+            color: #e74c3c;
+        }
+    </style>
+    <script>
+        // 기존 코드에 함수 로직이 없어서, 예시로 작동하도록 껍데기를 구현했습니다.
+        // 실제 계산 로직(공식)이 있다면 아래 함수 안에 내용을 수정하시면 됩니다.
+        
+        function checkBarcode() {
+            var w = document.getElementById("width").value;
+            var h = document.getElementById("height").value;
+
+            // [예시 로직] 실제 공식으로 교체 필요
+            // 텍스트에 있던 예시: 300 -> 15.9, 90 -> 1.6
+            // 대략적 비율로 계산하여 보여주는 시늉만 낸 코드입니다.
+            var resultW = (w * 0.053).toFixed(1); 
+            var resultH = (h * 0.0177).toFixed(1);
+
+            document.getElementById("outputWidth").innerText = resultW;
+            document.getElementById("outputHeight").innerText = resultH;
+        }
+
+        function checkBarcode2() {
+            var w2 = document.getElementById("width2").value;
+            var h2 = document.getElementById("height2").value;
+
+            // [예시 로직] 실제 공식으로 교체 필요
+            var resultW2 = Math.round(w2 / 0.053);
+            var resultH2 = Math.round(h2 / 0.0177);
+
+            document.getElementById("outputWidth2").innerText = resultW2;
+            document.getElementById("outputHeight2").innerText = resultH2;
+        }
+    </script>
+</head>
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+
+    <div class="container">
+        <header>
+            <h1>설정 가이드 및 도구</h1>
+        </header>
+
+        <div class="content">
+            <h2>마크애니 뷰어 옵션 안내</h2>
+            <table class="option-table">
+                <thead>
+                    <tr>
+                        <th>값</th>
+                        <th>동작 설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><th>0</th><td>미리보기 후 [인쇄] 버튼 클릭 시 프린터 선택창 호출</td></tr>
+                    <tr><th>1</th><td>미리보기 후 [인쇄] 버튼 클릭 시 기본 프린터로 즉시 출력</td></tr>
+                    <tr><th>2</th><td>미리보기 후 자동으로 프린터 선택창 호출</td></tr>
+                    <tr><th>3</th><td>미리보기 후 자동으로 기본 프린터로 즉시 출력</td></tr>
+                    <tr><th>4</th><td>미리보기만 지원 (인쇄 불가)</td></tr>
+                    <tr><th>10</th><td>미리보기 없이 프린터 선택창 호출</td></tr>
+                    <tr><th>11</th><td>미리보기 없이 기본 프린터로 즉시 출력</td></tr>
+                </tbody>
+            </table>
+
+            <h2>바코드 사이즈 설정 안내</h2>
+            <ul class="info-list">
+                <li>바코드 사이즈 설정 시 <strong>실제 입력 값(픽셀)</strong>과 <strong>출력 값(Cm)</strong>이 상이합니다.<br>
+                    (예: 입력 300/90 &rarr; 출력 15.9cm / 1.6cm)</li>
+                <li>출력 값의 단위는 <strong>cm</strong>이며, 소수 첫째 자릿수에서 반올림한 값을 나타냅니다.</li>
+                <li>기본 설정 값: 가로 300 / 세로 90</li>
+                <li>2D 바코드의 경우 출력 시 오차 범위가 존재합니다. (가로: 0.3 / 세로: 0.1)</li>
+            </ul>
+
+            <h2>바코드 사이즈 변환 미리보기</h2>
+            
+            <div class="calculator-section">
+                <span class="calc-title">1. 입력 값으로 실제 출력 cm값 확인</span>
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <label for="width">가로 입력값</label>
+                        <input type="number" name="width" id="width" value="300">
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="height">세로 입력값</label>
+                        <input type="number" name="height" id="height" value="90">
+                    </div>
+                    <input type="button" onclick="checkBarcode();" value="출력 값 확인">
+                </div>
+                <div class="result-box">
+                    <div class="result-item">가로 출력값: <span id="outputWidth">-</span> cm</div>
+                    <div class="result-item">세로 출력값: <span id="outputHeight">-</span> cm</div>
+                </div>
+            </div>
+
+            <div class="calculator-section">
+                <span class="calc-title">2. 출력 cm값으로 입력 값 확인</span>
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <label for="width2">가로 출력값 (cm)</label>
+                        <input type="number" name="width2" id="width2">
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="height2">세로 출력값 (cm)</label>
+                        <input type="number" name="height2" id="height2">
+                    </div>
+                    <input type="button" onclick="checkBarcode2();" value="입력 값 확인">
+                </div>
+                <div class="result-box">
+                    <div class="result-item">가로 입력값: <span id="outputWidth2">-</span></div>
+                    <div class="result-item">세로 입력값: <span id="outputHeight2">-</span></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

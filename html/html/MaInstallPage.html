@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹화면 보안 수동 설치 페이지</title>
+    <link rel="stylesheet" type="text/css" href="./../css/base.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="./../images/top_img.jpg" alt="상단 이미지" id="top_img">
+        </header>
+        <main class="content">
+            <section id="downloadTable">
+                <table>
+                    <thead>
+                        <tr>
+                            <th id="progrmaName">프로그램명</th>
+                            <th id="supportOS">운영체제 지원범위</th>
+                            <th id="supportBS">브라우져 지원범위</th>
+                            <th id="installStatus">다운로드</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="winTr">
+                            <td>WebDRM</td>
+                            <td>Windows OS</td>
+                            <td class="supportBStd">
+                                - Chrome<br>
+                                - Edge<br>
+                                - Firefox<br>
+                                - Whale<br> 
+                            </td>
+                            <td>
+                                <div class="btn_gray_ang" id="btn_Download_webDrm" onclick="downloadFile('webDrm');" tabindex="1">
+                                    설치하기
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="guideSection">
+                <h3 class="guide-title">※ 설치 후 브라우저 설정 안내</h3>
+                <p class="guide-desc">
+                    프로그램 설치 후 정상적으로 동작하지 않을 경우, 아래 안내에 따라 브라우저 설정을 확인해 주세요.
+                </p>
+                <div class="guide-step">
+                    <div class="step-header">
+                        <span class="step-number">1</span>
+                        <span class="step-text">브라우저 주소창 옆 아이콘을 클릭한 후, <strong>사이트 설정</strong>을 선택합니다.</span>
+                    </div>
+                    <div class="step-image">
+                        <img src="./../images/guide_site_setting.png" alt="사이트 설정 진입 안내 이미지" style="max-width: 60%;">
+                    </div>
+                </div>
+                <div class="guide-step">
+                    <div class="step-header">
+                        <span class="step-number">2</span>
+                        <span class="step-text">사이트 설정 화면에서 <strong>기기에 있는 앱</strong> 항목을 찾아 <strong>허용</strong>으로 변경합니다.</span>
+                    </div>
+                    <div class="step-image">
+                        <img src="./../images/guide_app_allow.png" alt="기기에 있는 앱 허용 설정 안내 이미지">
+                    </div>
+                </div>
+            </section>
+            <p class="guide-notice">※ 위 안내 이미지는 이해를 돕기 위한 예시이며, 실제 화면과 다를 수 있습니다.</p>
+        </main>
+    </div>
+
+    <style>
+        #guideSection {
+            max-width: 900px;
+            margin: 30px auto 0;
+            padding: 28px 32px;
+            border: 1px solid #d0d0d0;
+            border-radius: 8px;
+            background-color: #fafafa;
+            text-align: center;
+        }
+        .guide-title {
+            font-size: 17px;
+            color: #333;
+            margin: 0 0 8px 0;
+        }
+        .guide-desc {
+            font-size: 15px;
+            color: #d32f2f;
+            font-weight: bold;
+            margin: 0 0 24px 0;
+            line-height: 1.6;
+        }
+        .guide-step {
+            margin-bottom: 28px;
+            text-align: center;
+        }
+        .guide-step:last-child {
+            margin-bottom: 0;
+        }
+        .step-header {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+        }
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: #1a56db;
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        .step-text {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.5;
+            text-align: left;
+        }
+        .step-image {
+            text-align: center;
+            margin: 0 auto;
+        }
+        .step-image img {
+            max-width: 70%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+    <style>
+        .guide-notice {
+            text-align: center;
+            font-size: 13px;
+            color: #999;
+            margin-top: 16px;
+        }
+    </style>
+
+    <script>
+        document.getElementById("btn_Download_webDrm").style.display = "block";
+
+        const webDrmUrl = "./../bin/Inst_MaWebDRM.exe";
+
+        function downloadFile(downloadType) {
+            location.href = webDrmUrl;
+        }
+    </script>
+</body>
+</html>
